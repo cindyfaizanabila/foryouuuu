@@ -1,0 +1,792 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy Birthday Surprise!</title>
+
+    <link rel="stylesheet" href="asset/css/1.css" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      @font-face {
+        font-family: "Sirukota";
+        src: url("Sirukota.ttf") format("truetype");
+      }
+
+      .sirukota {
+        font-family: "Sirukota", sans-serif;
+      }
+
+      body {
+        background: url("asset/img/bg.jpg") no-repeat center center fixed;
+        background-size: cover;
+        font-family: "Fraunces", cursive;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        overflow: hidden;
+      }
+      h2 {
+        margin: 0px;
+        padding: 0px;
+        font-size: 2.5rem;
+        color: #ff9191;
+      }
+      span {
+        color: #fff7f7;
+        background-color: #ff9191;
+        border-radius: 15px;
+        padding: 3px 5px;
+      }
+      .container {
+        text-align: center;
+        padding: 40px;
+        background: rgba(255, 255, 255, 0.9);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        max-width: 600px;
+        width: 70%;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .page {
+        display: none;
+      }
+
+      .page.active {
+        display: block;
+        animation: fadeIn 1s ease-in-out;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .gif {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-bottom: 20px;
+      }
+      .gif img {
+        width: 50%;
+        height: auto;
+      }
+
+      .next-button,
+      .open-button,
+      .wa-button {
+        background: linear-gradient(45deg, #f06292, #ff9191);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        border-radius: 50px;
+        cursor: pointer;
+        margin: 20px 10px 0;
+        box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+        transition: 0.3s;
+      }
+
+      .next-button:hover,
+      .open-button:hover,
+      .wa-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+      }
+
+      .title {
+        font-size: 2.5rem;
+        color: #ff9191;
+        margin-bottom: 20px;
+      }
+
+      h1 {
+        font-size: 2rem;
+        color: #ffefef;
+      }
+      .text {
+        font-size: 1.1rem;
+        line-height: 1.6;
+        color: #ffb8b8;
+        text-align: center;
+      }
+
+      .hearts,
+      .confetti {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        overflow: hidden;
+      }
+
+      .heart {
+        position: absolute;
+        font-size: 20px;
+        animation: floatHearts 10s linear infinite;
+        opacity: 0;
+      }
+
+      @keyframes floatHearts {
+        0% {
+          transform: translateY(100vh) scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(-120vh) scale(1);
+          opacity: 0;
+        }
+      }
+
+      .confetti-piece {
+        width: 10px;
+        height: 10px;
+        position: absolute;
+        animation: confettiFall 3s linear infinite;
+      }
+
+      @keyframes confettiFall {
+        0% {
+          transform: translateY(-100vh) rotate(0);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(720deg);
+          opacity: 0;
+        }
+      }
+    </style>
+  </head>
+    <div class="hearts" id="heartsContainer"></div>
+    <div class="confetti" id="confettiContainer"></div>
+
+    <div class="container">
+      <!-- Page 1: Amplop -->
+      <div class="page active" id="page1">
+        <div class="gif">
+          <img src="hi.gif" alt="GIF lucu" />
+        </div>
+        <h1 class="title sirukota">
+          Hai
+          <span
+            style="
+              color: #fff7f7;
+              background-color: #ff9191;
+              border-radius: 20px;
+              padding:10px;
+            "
+          >
+            sayang
+          </span>
+        </h1>
+
+        <button class="next-button sirukota" onclick="showPage(2)">
+          haii juga cintaku
+        </button>
+        <button class="next-button sirukota" onclick="showPage(46)">
+          apasii! (ง'̀-'́)ง
+        </button>
+      </div>
+
+       <!-- Page 2: Surat -->
+      <div class="page" id="page46">
+      
+
+        <h2 class="sirukota" style="margin-bottom: 20px">
+          ywd
+        </h2>
+       
+        <button class="next-button sirukota" onclick="showPage(1)">
+          balik dehh
+        </button>
+      </div>
+
+      <!-- Page 2: Surat -->
+      <div class="page" id="page2">
+        <div class="text">‧₊˚♪ 𝄞₊˚⊹‧₊˚♪ 𝄞₊˚⊹</div>
+
+        <h2 class="sirukota" style="margin-bottom: 20px">
+          <span>Putar</span> dulu musiknya
+        </h2>
+        <audio src="lagu.mp3" controls></audio>
+        <button class="next-button sirukota" onclick="showPage(3)">
+          lanjut niiee (˶ᵔ ᵕ ᵔ˶)
+        </button>
+      </div>
+
+      <!-- Page 3: GIF Muncul -->
+      <div class="page" id="page3">
+        <div class="gif">
+          <img src="music.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">‧𓂃˖˳·˖ ִֶָ ⋆🌷͙⋆ ִֶָ˖·˳˖𓂃 ִֶָ</div>
+        <h2 class="sirukota">Kepo gaa?</h2>
+
+        <button class="next-button sirukota" onclick="showPage(4)">
+          kepo dong
+        </button>
+      </div>
+
+      <!-- Page 4: Kotak Hadiah -->
+      <div class="page" id="page4">
+        <div class="gif">
+          <img src="sebenarnya.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･-ˋˏ ༻❁✿❀༺ ˎˊ-</div>
+        <h2 class="sirukota"><span>HOHOHO</span> pelan aja, dibaca semuanya</h2>
+        <button class="open-button sirukota" onclick="showPage(5)">
+          kenapa ketawa?
+        </button>
+      </div>
+
+      <!-- Page 5: Kotak Hadiah -->
+      <div class="page" id="page5">
+        <div class="gif">
+          <img src="imur.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">-ˋˏ ༻❁✿❀༺ ˎˊ-</div>
+        <h2 class="sirukota">gapapa <span>pengen</span> aja</h2>
+        <button class="open-button sirukota" onclick="showPage(6)">
+          yeee ( •᷄ᴗ•́)
+        </button>
+      </div>
+
+      <!-- Page 6: Kotak Hadiah -->
+      <div class="page" id="page6">
+        <div class="gif">
+          <img src="bosan.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･⋆꙳•̩̩͙❅*̩̩͙‧͙ ‧͙*̩̩͙❆ ͙͛ ˚₊⋆</div>
+        <h2 class="sirukota">aku mau <span>cerita</span> mau dengerin gaa?</h2>
+        <button class="open-button sirukota" onclick="showPage(7)">
+          iyaaa, kenapa sayang?
+        </button>
+      </div>
+
+      <!-- Page 7: Kotak Hadiah -->
+      <div class="page" id="page7">
+        <div class="gif">
+          <img src="sebenarnya.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･₊˚ʚ ᗢ₊˚✧ ﾟ.</div>
+        <h2 class="sirukota">sebenarnyaa</h2>
+        <button class="open-button sirukota" onclick="showPage(8)">hmm?</button>
+      </div>
+
+      <!-- Page 8: Kotak Hadiah -->
+      <div class="page" id="page8">
+        <div class="gif">
+          <img src="sebenarnya2.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">-ˋˏ ༻❁༺ ˎˊ-</div>
+        <h2 class="sirukota">sebenarnyaaaaa</h2>
+        <button class="open-button sirukota" onclick="showPage(9)">
+          iyaa?
+        </button>
+      </div>
+
+      <!-- Page 9: Kotak Hadiah -->
+      <div class="page" id="page9">
+        <div class="gif">
+          <img src="grogi.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">⋆˖⁺‧₊☽◯☾₊‧⁺˖⋆･</div>
+        <h2 class="sirukota">aduh grogi,,,</h2>
+        <button class="open-button sirukota" onclick="showPage(10)">
+          awokawok kenapaa?
+        </button>
+      </div>
+      <!-- Page 10: Kotak Hadiah -->
+      <div class="page" id="page10">
+        <div class="gif">
+          <img src="kiss.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">✧˖°꒰๑’ꀾ’๑꒱°˖✧</div>
+        <h2 class="sirukota">
+          aku sayanggg banget sama <span>kamu</span>
+        </h2>
+        <button class="open-button sirukota" onclick="showPage(11)">
+          hehehee aku jugaaa sayang bangettt.....
+        </button>
+      </div>
+
+      <!-- Page 11: Kotak Hadiah -->
+      <div class="page" id="page11">
+        <div class="gif">
+          <img src="malu.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･°❀⋆.ೃ࿔*:･･</div>
+        <h2 class="sirukota">kyaaa (≧ヮ≦)</h2>
+        <button class="open-button sirukota" onclick="showPage(12)">
+          iyaa?
+        </button>
+      </div>
+
+      <!-- Page 12: Kotak Hadiah -->
+      <div class="page" id="page12">
+        <div class="gif">
+          <img src="birthday.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°༘˚⋆𐙚｡⋆𖦹.✧˚</div>
+        <h2 class="sirukota">happy Birthday <span>sayang</span></h2>
+        <button class="open-button sirukota" onclick="showPage(13)">
+          xixiixxi
+        </button>
+      </div>
+
+      <!-- Page 13: Kotak Hadiah -->
+      <div class="page" id="page13">
+        <div class="gif">
+          <img src="tua.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°☀︎⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">semoga panjang <span>umur</span></h2>
+        <button class="open-button sirukota" onclick="showPage(14)">
+          aamiin
+        </button>
+      </div>
+
+      <!-- Page 14: Kotak Hadiah -->
+      <div class="page" id="page14">
+        <div class="gif">
+          <img src="sakit.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">⋆୨୧˚૮ ＾ﻌ＾ა˚୨୧⋆</div>
+        <h2 class="sirukota"><span>sehattt</span>selaluuu</h2>
+        <button class="open-button sirukota" onclick="showPage(15)">
+          aamiinn
+        </button>
+      </div>
+
+      <!-- Page 15: Kotak Hadiah -->
+      <div class="page" id="page15">
+        <div class="gif">
+          <img src="bahagia.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">₍ᐢ._.ᐢ₎♡ ༘</div>
+        <h2 class="sirukota">selalu <span>bahagiaaa</span></h2>
+        <button class="open-button sirukota" onclick="showPage(16)">
+          aamiinnn
+        </button>
+      </div>
+
+      <!-- Page 16: Kotak Hadiah -->
+      <div class="page" id="page16">
+        <div class="gif">
+          <img src="ganteng.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">ʚ(*´꒳`*)ɞ .｡✧･ﾟ:* ~♡</div>
+        <h2 class="sirukota">tambah <span>ganteng</span></h2>
+        <button class="open-button sirukota" onclick="showPage(17)">
+          aku udah ganteng
+        </button>
+      </div>
+
+      <!-- Page 17: Kotak Hadiah -->
+      <div class="page" id="page17">
+        <div class="gif">
+          <img src="semangat.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">૮⸝⸝ >  ꇴ ⸝⸝ づ━☆*:･ﾟ✧</div>
+        <h2 class="sirukota">selalu semangat <span>belajar</span></h2>
+        <button class="open-button sirukota" onclick="showPage(18)">
+          aku akan belajar setiap hariii
+        </button>
+      </div>
+      <!-- Page 18: Akhir & WhatsApp -->
+      <div class="page" id="page18">
+        <div class="gif">
+          <img src="bingung.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">ʚ(*´꒳`*)ɞ .｡✧･ﾟ:* ~♡</div>
+        <h2 class="sirukota">apalagi yaa</h2>
+        <button class="open-button sirukota" onclick="showPage(19)">
+          hohohohoho
+        </button>
+      </div>
+      <!-- Page 19: Kotak Hadiah -->
+      <div class="page" id="page19">
+        <div class="gif">
+          <img src="sukses.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">semoga jadi tambah <span>suksess</span></h2>
+        <button class="open-button sirukota" onclick="showPage(20)">
+          aamiin paling kenceng
+        </button>
+      </div>
+      <!-- Page 20: Kotak Hadiah -->
+      <div class="page" id="page20">
+        <div class="gif">
+          <img src="dudukaya.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota"><span>semoga</span> banyak uangg</h2>
+        <button class="open-button sirukota" onclick="showPage(21)">
+          aamiiinnn...
+        </button>
+      </div>
+      <!-- Page 21: Kotak Hadiah -->
+      <div class="page" id="page21">
+        <div class="gif">
+          <img src="pusing.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">semoga <span>nggak</span> pusing pusing lagiii</h2>
+        <button class="open-button sirukota" onclick="showPage(22)">
+          aamiinnnnnn
+        </button>
+      </div>
+      <!-- Page 22: Kotak Hadiah -->
+      <div class="page" id="page22">
+        <div class="gif">
+          <img src="line.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">anjay<span>romantis</span> banget aku</h2>
+        <button class="open-button sirukota" onclick="showPage(23)">
+          aaowkoakowakowa
+        </button>
+      </div>
+      <!-- Page 23: Kotak Hadiah -->
+      <div class="page" id="page23">
+        <div class="gif">
+          <img src="hug.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">i love <span>youuuu</span></h2>
+        <button class="open-button sirukota" onclick="showPage(24)">
+          i love you moree
+        </button>
+      </div>
+      <!-- Page 24: Kotak Hadiah -->
+      <div class="page" id="page24">
+        <div class="gif">
+          <img src="sebenarnya.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">hihihihi</h2>
+        <button class="open-button sirukota" onclick="showPage(25)">
+          iyaa sayang
+        </button>
+      </div>
+        <!-- Page 25: Kotak Hadiah -->
+      <div class="page" id="page25">
+      
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">BTW <span>font</span> pilihan kamu bagus <br><span>oiyaa</span> maap ngilang<br> sengaja hihi</h2>
+        <button class="open-button sirukota" onclick="showPage(26)">
+          lanjut
+        </button>
+      </div>
+      <!-- Page 26: Kotak Hadiah -->
+      <div class="page" id="page26">
+        <div class="gif">
+          <img src="tidur.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">meskipun kamu <span>kebo</span></h2>
+        <button class="open-button sirukota" onclick="showPage(27)">
+          ngga yaaa
+        </button>
+      </div>
+      <!-- Page 17: Kotak Hadiah -->
+      <div class="page" id="page27">
+        <div class="gif">
+          <img src="bee.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">atau lebah</h2>
+        <button class="open-button sirukota" onclick="showPage(28)">eh?</button>
+      </div>
+      <!-- Page 28: Kotak Hadiah -->
+      <div class="page" id="page28">
+        <div class="gif" style="width: 25%; height: auto; text-align: center">
+          <img src="jerapah.gif" alt="GIF lucu" />
+          <img src="tinju.gif" alt="GIF lucu" />
+          <img src="nyebelin.gif" alt="GIF lucu" />
+          <img src="magic.gif" alt="GIF lucu" />
+          <img src="jerapah.gif" alt="GIF lucu" />
+          <img src="tinju.gif" alt="GIF lucu" />
+          <img src="nyebelin.gif" alt="GIF lucu" />
+          <img src="magic.gif" alt="GIF lucu" />
+          <img src="jerapah.gif" alt="GIF lucu" />
+          <img src="tinju.gif" alt="GIF lucu" />
+          <img src="nyebelin.gif" alt="GIF lucu" />
+          <img src="magic.gif" alt="GIF lucu" />
+          <img src="jerapah.gif" alt="GIF lucu" />
+          <img src="tinju.gif" alt="GIF lucu" />
+          <img src="nyebelin.gif" alt="GIF lucu" />
+          <img src="magic.gif" alt="GIF lucu" />
+          <img src="jerapah.gif" alt="GIF lucu" />
+          <img src="tinju.gif" alt="GIF lucu" />
+          <img src="nyebelin.gif" alt="GIF lucu" />
+          <img src="magic.gif" alt="GIF lucu" />
+          <img src="jerapah.gif" alt="GIF lucu" />
+          <img src="tinju.gif" alt="GIF lucu" />
+          <img src="nyebelin.gif" alt="GIF lucu" />
+          <img src="magic.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">atau jadi jerapah, pesulap, petinju, <span>nyebelin</span></h2>
+        <button class="open-button sirukota" onclick="showPage(29)">
+          awokakoa
+        </button>
+      </div>
+      <!-- Page 29: Kotak Hadiah -->
+      <div class="page" id="page29">
+        <div class="gif">
+          <img src="sedih.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota"><span>aku</span> tetep sayang kamuuuu<br> tapii aku sedih</h2>
+        <button class="open-button sirukota" onclick="showPage(30)">
+          sedih kenapaa?
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page30">
+        <div class="gif">
+          <img src="jauh.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">kamu <span>jauh</span></h2>
+        <button class="open-button sirukota" onclick="showPage(31)">
+          utututtuu
+        </button>
+      </div>
+      <!-- Page 31: Kotak Hadiah -->
+      <div class="page" id="page31">
+        <div class="gif">
+          <img src="iklogmain.gif" alt="GIF lucu" />
+          <img src="main2.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">padahal dulu kita <span>main bareng</span></h2>
+        <button class="open-button sirukota" onclick="showPage(32)">
+          iyaa
+        </button>
+      </div>
+      <!-- Page 32: Kotak Hadiah -->
+      <div class="page" id="page32">
+        <div class="gif">
+          <img src="makan2.gif" alt="GIF lucu" />
+          <img src="makan.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">makan bareng</h2>
+        <button class="open-button sirukota" onclick="showPage(33)">
+          iyaaa
+        </button>
+      </div>
+      <!-- Page 33: Kotak Hadiah -->
+      <div class="page" id="page33">
+        <div class="gif">
+          <img src="belajar.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota"><Span>belajar</Span> bareng</h2>
+        <button class="open-button sirukota" onclick="showPage(34)">
+          belajarkah?
+        </button>
+      </div>
+      <!-- Page 34: Kotak Hadiah -->
+      <div class="page" id="page34">
+        <div class="gif">
+          <img src="motor.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">motoran bareng</h2>
+        <button class="open-button sirukota" onclick="showPage(35)">
+          iyaaa
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page35">
+        <div class="gif">
+          <img src="motor2.gif" alt="GIF lucu" />
+          <img src="motor3.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">sekarang <span>jadi</span> sendiri sendiri</h2>
+        <button class="open-button sirukota" onclick="showPage(36)">
+          huuuu mau gimana lagii
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page36">
+        <div class="gif">
+          <img src="lobe.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">tapi gapapa<br> <span>2.401.200</span> detik lagi kita bertemu</h2>
+        <button class="open-button sirukota" onclick="showPage(37)">
+          HAHAHAH
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page37">
+        <div class="gif">
+          <img src="malu2.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">aduuu <span>malu</span> akuu</h2>
+        <button class="open-button sirukota" onclick="showPage(38)">
+          uawokoakokwa
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page38">
+        <div class="gif">
+          <img src="menikah.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">i love youuuuuuu <span>sayangkuuuu</span><br> happy birthday</h2>
+        <button class="open-button sirukota" onclick="showPage(39)">
+          iyaa sayang 
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page39">
+        <div class="gif">
+          <img src="marah.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">ihhh kok gitu <span>jawabnya</span></h2>
+        <button class="open-button sirukota" onclick="showPage(40)">
+          lohh kenapaa?
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page40">
+        <div class="gif">
+          <img src="marah2.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">gpp terserah</h2>
+        <button class="open-button sirukota" onclick="showPage(41)">
+          i love you moree
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page41">
+        <div class="gif">
+          <img src="marah3.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota"><span>y</span>terserah kamu, <span>Bebas</span></h2>
+        <button class="open-button sirukota" onclick="showPage(42)">
+          utututuu marah yaa
+        </button>
+      </div>
+      <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page42">
+        <div class="gif">
+          <img src="marah4.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">kamu mau aku gamarah?</h2>
+        <button class="open-button sirukota" onclick="showPage(43)">
+         iyaa
+        </button>
+      </div>
+         <!-- Page 30: Kotak Hadiah -->
+         <div class="page" id="page43">
+        <div class="gif">
+          <img src="pesta.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">aku mau jadi <span>yang</span> pertama <span>ngucapinn</span></h2>
+        <button class="open-button sirukota" onclick="showPage(44)">
+         gimanaa?
+        </button>
+         </div>
+   
+       <!-- Page 30: Kotak Hadiah -->
+         <div class="page" id="page44" style="background:none;">
+        <div class="gif">
+          <img src="call.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">call aku <span>10 detik</span> buat ngucapin</h2>
+        <a href="https://wa.me/6285815341200?text=I%20LOVE%20YOU%20MORE%20💖" target="_blank" class="open-button sirukota">
+  iyaa
+</a>
+        <button class="open-button sirukota" onclick="showPage(45)">
+       gabisaa
+        </button>
+         </div>
+  <!-- Page 30: Kotak Hadiah -->
+      <div class="page" id="page45">
+        <div class="gif">
+          <img src="marah4.gif" alt="GIF lucu" />
+        </div>
+        <div class="text">°❀⋆.ೃ࿔*:･</div>
+        <h2 class="sirukota">yaudaa <span>gapapaa</span></h2>
+        <a href="https://wa.me/6285815341200?text=I%20LOVE%20YOU%20MOREEEE%20💖" target="_blank" style="margin-top: 20px;" class="open-button sirukota">
+  klik ini aja 
+</a>
+      </div>
+    </div>
+    <script>
+      let currentPage = 1;
+
+    function showPage(num) {
+  document.getElementById(`page${currentPage}`).classList.remove("active");
+  currentPage = num;
+  document.getElementById(`page${currentPage}`).classList.add("active");
+
+  // Jika halaman aktif adalah 12 atau lebih
+  if (num >= 12) {
+   for (let i = 0; i < 50; i++) {
+  setTimeout(createHeart, i * 100); // lebih cepat juga
+      setTimeout(createConfetti, i * 100);
+    }
+  }
+}
+
+      function showGif() {
+        document.getElementById("gifContainer").style.display = "block";
+      }
+
+      function createHeart() {
+        const hearts = ["💖", "💕", "💓", "💗", "💘"];
+        const el = document.createElement("div");
+        el.className = "heart";
+        el.innerHTML = hearts[Math.floor(Math.random() * hearts.length)];
+        el.style.left = Math.random() * 100 + "%";
+        el.style.animationDelay = Math.random() * 2 + "s";
+        document.getElementById("heartsContainer").appendChild(el);
+        setTimeout(() => el.remove(), 3000);
+      }
+
+   function createConfetti() {
+  const el = document.createElement("div");
+  el.className = "confetti-piece";
+  el.style.left = Math.random() * 100 + "%";
+  el.style.backgroundColor = "#ff9191"; // warna pink
+  el.style.animationDelay = Math.random() * 2 + "s";
+  document.getElementById("confettiContainer").appendChild(el);
+  setTimeout(() => el.remove(), 3000);
+}
+    </script>
+  </body>
+</html>
